@@ -1,0 +1,43 @@
+fun main () : nothing
+
+	$ Extended Euclidean Algorithm
+	fun eea (a, b : int; ref x, y : int) : int
+		var temp, gcd : int;
+	{
+		if a mod b = 0 then { $ a mod b = 0, a' = qa + b => b = a' - qa => x = 1, y = -q (so y_init must be 1 because y(a', a) = -q = -q*y(a, b) = y_init, see below the step y <- temp - q*y)
+			x <- 0;
+			y <- 1;
+			return b;
+		}
+		$ a = qb + r => r = a - qb
+		$ gcd = bx + ry => gcd = bx + ay - qby = ay + b(x-qy)
+		gcd <- eea(b, a mod b, x, y);
+		temp <- y;
+		y <- x - a div b * y;
+		x <- temp;
+		return gcd;
+	}
+
+	var a, b, x, y, gcd : int;
+
+{ $ main
+	a <- readInteger();
+	b <- readInteger();
+	gcd <- eea(a, b, x, y);
+	writeInteger(x);
+	writeChar('*');
+	writeInteger(a);
+	if y > 0 then {
+		writeString(" + ");
+		writeInteger(y);
+	}
+	else {
+		writeString(" - ");
+		writeInteger(-y);
+	}
+	writeChar('*');
+	writeInteger(b);
+	writeString(" = ");
+	writeInteger(gcd);
+	writeChar('\n');
+} $ main

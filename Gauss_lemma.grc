@@ -1,0 +1,18 @@
+fun main () : nothing
+
+	var n, m, p, t, nodd : int;
+
+{ $ main
+	writeString("Computing the Legendre symbol (n|p) so p must be prime\nEnter n and p:\n");
+	n <- readInteger();
+	p <- readInteger();
+	nodd <- (p*p - 1) div 8 * (n-1) mod 2;
+	m <- 0;
+	t <- (p - 1) div 2;
+	while t > 0 do {
+		m <- (m + t*n div p + nodd) mod 2; $ is the mod 2 operation really needed here? if we were using bignums then it would keep the number size small and make it faster, but if we are using n-bit numbers then it's just slower bc 1 more op per loop. Maybe the compiler can optimize it by putting the mod 2 operation outside the loop
+		t <- t-1;
+	}
+	writeInteger(1-2*m);
+	writeChar('\n');
+} $ main

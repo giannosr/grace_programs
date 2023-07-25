@@ -1,0 +1,49 @@
+fun main () : nothing
+	
+	fun min (a, b, c : int) : int
+		var m : int;
+	{
+		m <- a;
+		if b < m then m <- b;
+		if c < m then m <- c;
+		return m;
+	}
+	
+	var A, B : char[4096];
+	var M    : int [4096][4096];
+
+	fun ed (i, j : int) : int
+
+	{
+		if M[i][j] # -1         then return M[i][j];
+		$$ 
+		$	The following two lines have been merged in the line that follows the comment
+		$	else if i = 0       then M[i][j] <- j;
+		$	else if j = 0       then M[i][j] <- i;
+		$$
+		else if i = 0 or j = 0  then M[i][j] <- i + j;
+		else if A[i-1] = B[i-1] then M[i][j] <- ed(i-1, j-1);
+		else                         M[i][j] <- min(1 + ed(i, j-1),
+		                                            1 + ed(i-1, j),
+		                                            2 + ed(i-1, j-1));
+		return M[i][j];
+	}
+
+	var al, bl, i, j : int;
+
+{ $ main
+	readString (4096, A);
+	readString (4096, B);
+	al <- strlen(A);
+	bl <- strlen(B);
+	i <- 0;
+	while i < al do { $ initialize memoization array
+		j <- 0;
+		while j < bl do {
+			M[i][j] <- -1;
+			j <- j+1;
+		}
+		i <- i+1;
+	}
+	writeInteger(ed(al, bl));
+} $ main

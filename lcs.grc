@@ -1,0 +1,40 @@
+fun main () : nothing
+
+	fun max (a, b : int) : int
+
+	{
+		if a > b then return a; else return b;
+	}
+
+	var X, Y : char[4096];       $ The two strings
+	var DP   : int [4096][4096]; $ DP array, must be initialized to -1
+
+	$ Longest Common Subsequence
+	fun lcs (i, j : int) : int
+
+	{
+		if i < 0 or j < 0     then return 0;
+		else if DP[i][j] # -1 then return DP[i][j];
+		else if X[i] = Y[j]   then DP[i][j] <- 1 + lcs(i-1, j-1);
+		else                       DP[i][j] <- max(lcs(i-1, j), lcs(i, j-1));
+		return DP[i][j];
+	}
+
+	var x, y, i, j : int;
+
+{ $ main
+	readString(4096, X);
+	readString(4096, Y);
+	x <- strlen(X);
+	y <- strlen(Y);
+	i <- 0;
+	while i < x do { $ initialize DP array
+		j <- 0;
+		while j < y do {
+			DP[i][j] <- -1;
+			j <- j+1;
+		}
+		i <- i+1;
+	}
+	writeInteger(lcs(x-1, y-1));
+} $ main

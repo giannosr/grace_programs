@@ -1,0 +1,19 @@
+fun main () : nothing
+
+	$ computes the nth Fibonacci number fast
+	fun ffib (n : int) : int
+		var a, b : int;
+	{
+		if n < 1      then return 0;
+		else if n < 3 then return 1;
+		else {
+			a <- ffib(n div 2);
+			b <- ffib(n div 2 + 1);
+			if n mod 2 = 1 then return b*b + a*a;
+			else                return 2*a*(b - a);
+		}
+	}
+
+{ $ main
+	writeInteger(ffib(readInteger()));
+} $ main

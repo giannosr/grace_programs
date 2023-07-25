@@ -1,0 +1,54 @@
+fun main () : nothing
+	
+	$ Extended Euclidean Algorithm (see other file)
+	fun eea (a, b : int; ref x, y : int) : int
+		var temp, gcd : int;
+	{
+		if a mod b = 0 then {
+			x <- 0;
+			y <- 1;
+			return b;
+		}
+		gcd <- eea(b, a mod b, x, y);
+		temp <- y;
+		y <- x - a div b*y;
+		x <- temp;
+		return gcd;
+	}
+
+	var a, b, m, d, x, y : int;
+
+{ $ main
+	writeString("Solving ax = b (mod m). Provide a, b and m:\n");
+	a <- readInteger();
+	b <- readInteger();
+	m <- readInteger();
+	writeString("\n");
+	writeInteger(a);
+	writeString("x = ");
+	writeInteger(b);
+	writeString(" (mod ");
+	writeInteger(m);
+	writeString(")\n\t");
+	d <- eea(a, m, x, y); $ just want the gcd at this point so we could avoid the extended version
+	if b mod d = 0 then {
+		writeInteger(d);
+		writeString(" unique solutions (mod ");
+		writeInteger(m);
+		writeString(")\n");
+	}
+	else {
+		writeString("Impossible for x in Z.\n");
+		return;
+	}
+	eea(a div d, m div d, x, y); $ (x is now the modular inverse of a/d (mod m/d))
+	y <- x*(b div d);
+	writeInteger(y);
+	y <- y + b div d;
+	while y < m do {
+		writeChar(' ');
+		writeInteger(y);
+		y <- y + b div d;
+	}
+	writeChar('\n');
+} $ main

@@ -1,0 +1,26 @@
+fun main () : nothing
+
+	fun swap (ref a, b : int) : nothing
+		var t : int;
+	{
+		t <- a;
+		a <- b;
+		b <- t;
+		return;
+	}
+
+	fun Euclidean_algorithm (a, b : int) : int
+		var r : int;
+	{
+		if a < b then swap(a, b);
+		while b # 0 do {
+			r <- a mod b;
+			a <- b;
+			b <- r;
+		}
+		return a;
+	}
+
+{ $ main
+	writeInteger(Euclidean_algorithm(readInteger(), readInteger()));
+} $ main

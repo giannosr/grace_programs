@@ -1,0 +1,38 @@
+fun main () : nothing
+
+	$$
+	$  A prgram that computes Fermat numbers.
+	$ Fn = 2^(2^n) + 1, where n is an element of N.
+	$ Fermat's conjecture was that every such number
+	$ is a prime number, however this was disproven
+	$ by Euler 100 years later in 1732. F5 is the
+	$ first non prime in the sequence and at that
+	$ time they did not have computers to check it
+	$ so it wasn't as simple.
+	$ IRONICALLY however F5 = 2^32 + 1 which is more
+	$ than Grace is required to be able to represent
+	$ (16-bit signed) and also exactly 2 more than
+	$ the max signed int that can be represented in
+	$ a 32-bit word (so we can't directly compute
+	$ this number either if using 32 bit numbers or
+	$ smaller types and this carries on with F6 and
+	$ 64 bits, F7 and 128 bits, ...).
+	$ F4 is also the last discovered prime in the
+	$ sequence.
+	$ We use the property: Fn = F0*F1*...*F[n-1] + 2
+	$$
+
+	var n, Fn, ac : int;
+
+{ $ main
+	ac <- 1;
+	Fn <- 3;
+	n <- readInteger();
+	writeInteger(3);
+	while n > 0 do {
+		ac <- ac*Fn;
+		Fn <- ac+2;
+		writeInteger(Fn);
+		n <- n-1;
+	}
+} $ main

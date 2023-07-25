@@ -1,0 +1,34 @@
+fun main () : nothing
+	var n : int;
+	var A : int[100];
+	var B : int[010];
+	var C : int[001];
+	var D : int[010][010];
+
+	fun test(ref A : int[][20][10]) : nothing
+
+	{
+		return 3;
+	}
+
+	fun test2(ref A : int[]) : nothing
+
+	{
+		return 7;
+	}
+
+	fun testy() : int
+
+	{
+		return -123456;
+	}
+
+{ $ main
+	n <- 110;
+	n <- 000020;
+	n <- 44;
+	
+	testy();
+
+	return 0;
+} $ main
