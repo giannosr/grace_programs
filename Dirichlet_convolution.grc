@@ -21,7 +21,7 @@ fun main () : nothing
 
 { $ main
 	writeString("Maximum n: ");
-	max_n <- readInteger;
+	max_n <- readInteger();
 	writeString("Enter the values of f one by one\n");
 	i <- 1;
 	while i <= max_n do {
