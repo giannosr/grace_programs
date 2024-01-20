@@ -1,0 +1,6 @@
+fun main () : nothing
+	var s : char[16];
+{ $ main
+	strcpy(s, "hello world\n");
+	writeString(s);
+} $ main

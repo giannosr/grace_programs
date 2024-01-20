@@ -19,4 +19,5 @@ fun main () : nothing
 	n <- readInteger();
 	if i >= 0 and j >= 0 and n >= 0 then
 		writeInteger(z(i, j, n));
+	writeChar('\n');
 } $ main

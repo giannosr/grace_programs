@@ -11,13 +11,13 @@ fun main () : nothing
 		return m;
 	}
 	
-	var A, B            : char[4096];
-	var M               : int [2][4096];
+	var A, B            : char[40];
+	var M               : int [2][40];
 	var al, bl, i, j, k : int;
 
 { $ main
-	readString (4096, A);
-	readString (4096, B);
+	readString (40, A);
+	readString (40, B);
 	al <- strlen(A);
 	bl <- strlen(B);
 	j <- 0;
@@ -40,4 +40,5 @@ fun main () : nothing
 		i <- i+1;
 	}
 	writeInteger(M[al mod 2][bl]);
+	writeChar('\n');
 } $ main

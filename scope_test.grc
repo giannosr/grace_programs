@@ -1,0 +1,50 @@
+fun main () : nothing
+	var haha : int;
+
+	fun Euclidean_algorithm (a, b : int) : int
+		var r : int;
+
+		fun swap (ref a, b : int) : nothing
+			var t : int;
+			fun main () : int
+				fun swap () : nothing
+					var lo : int;
+				{
+					r <- 1 - r; a <- a - 1;
+					haha <- -haha;
+				}
+			{
+				a <- t*r;
+				r <- a + r;
+				swap();
+				return 42;
+			}
+		{
+			t <- 5; r <- 95;
+			a <- main();
+			r <- r+1;
+			t <- a;
+			a <- b;
+			b <- t;
+			return;
+		}
+
+	{
+		a <- 33;
+		b <- 55;
+		swap(a, b);
+		
+		if a < b then swap(a, b);
+		while b # 0 do {
+			r <- a mod b;
+			a <- b;
+			b <- r;
+		}
+		return a;
+	}
+
+{ $ main
+	$writeInteger(Euclidean_algorithm(readInteger(), readInteger()));
+	Euclidean_algorithm(66, 99);
+	strcmp("lol", "lmao");
+} $ main

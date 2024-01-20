@@ -1,0 +1,25 @@
+fun main () : nothing
+	var A : int[55];
+	var B : int[77][1];
+	
+	fun test1 (ref A : int[55]) : int { A[3] <- 99; return A[3]; }
+	fun test2 (ref A : int[])  : int { A[3] <- 99; return A[3]; }
+	fun test3 (ref B : int[77][1]) : int { B[6][7] <- 44; return B[6][7]; }
+	fun test4 (ref B : int[][1])  : int { B[6][7] <- 44; return B[6][7]; }
+	fun test5 () : int { A[3] <- 99; B[6][7] <- 44; return A[3] + B[6][7]; }
+	fun test6 (ref A : char[6]) : char { A[3] <- 'c'; return A[3]; }
+	fun test7 (ref A : char[])  : char { A[3] <- 'c'; return A[3]; }
+{
+	A[3] <- 555;
+	B[6][7] <- A[3];
+
+	test1(A);
+	test2(A);
+	test3(B);
+	test4(B);
+	test5();
+	test6("Hello");
+	test7("Hello");
+	"Hello"[3] <- 'c';
+	"Hello"[3] <- "Hello"[4];
+}

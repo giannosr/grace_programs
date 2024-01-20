@@ -1,0 +1,6 @@
+fun main () : nothing
+	var x, y : int;
+{
+	if x < 0 and y < 1 or y > x and not x < 4 then x <- 0;
+	return;
+}

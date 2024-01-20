@@ -1,0 +1,4 @@
+fun main () : nothing {
+  strcmp("hello", "helo");
+  return;
+}

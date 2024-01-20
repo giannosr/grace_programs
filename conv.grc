@@ -6,17 +6,12 @@ fun main () : nothing
 	{
 		n <- 1;
 		while n <= max_n do {
-			d <- 1; fg[n] <- 0;
-			while d <= n do {
-				if n mod d = 0 then
-					fg[n] <- fg[n] + f[d]*g[n div d];
-				d <- d+1;
-			}
+            fg[n] <- fg[n - 1] + f[n]*g[n];
 			n <- n+1;
 		}
 	}
 
-	var f, g, fg : int[409];
+	var f, g, fg : int[10];
 	var i, max_n : int;
 
 { $ main
@@ -34,11 +29,14 @@ fun main () : nothing
 		g[i] <- readInteger();
 		i <- i+1;
 	}
+	fg[0] <- 0;
 	conv(fg, f, g, max_n);
 	i <- 1;
 	while i <= max_n do {
 		writeInteger(fg[i]); writeChar(' ');
 		i <- i+1;
 	}
+	writeChar('\n');
+	writeString("ok\n");
 	writeChar('\n');
 } $ main

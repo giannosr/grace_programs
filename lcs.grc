@@ -6,8 +6,8 @@ fun main () : nothing
 		if a > b then return a; else return b;
 	}
 
-	var X, Y : char[4096];       $ The two strings
-	var DP   : int [4096][4096]; $ DP array, must be initialized to -1
+	var X, Y : char[40];     $ The two strings
+	var DP   : int [40][40]; $ DP array, must be initialized to -1
 
 	$ Longest Common Subsequence
 	fun lcs (i, j : int) : int
@@ -23,8 +23,8 @@ fun main () : nothing
 	var x, y, i, j : int;
 
 { $ main
-	readString(4096, X);
-	readString(4096, Y);
+	readString(40, X);
+	readString(40, Y);
 	x <- strlen(X);
 	y <- strlen(Y);
 	i <- 0;
@@ -36,5 +36,6 @@ fun main () : nothing
 		}
 		i <- i+1;
 	}
-	writeInteger(lcs(x-1, y-1));
+	writeInteger(lcs(x-2, y-2));
+	writeChar('\n');
 } $ main

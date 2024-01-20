@@ -1,6 +1,6 @@
 fun main () : nothing
 
-	var p : int[4096000]; $ primes (memory intensive)
+	var p : int[409]; $ primes
 
 	fun phi (n : int) : int $ Euler's phi function using Euler's product formula
 		var i, r : int;
@@ -49,9 +49,10 @@ fun main () : nothing
 
 { $ main
 	n <- readInteger();
-	if n-2 >= 4096000 then writeString("Error: not enough memory to run sieve\n"); $ notice that the max access is p[n-2]
+	if n-2 >= 409 then writeString("Error: not enough memory to run sieve"); $ notice that the max access is p[n-2]
 	else {
 		Eratosthenes(n);
 		writeInteger(phi(n));
 	}
+	writeChar('\n');
 } $ main

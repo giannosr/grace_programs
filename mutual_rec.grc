@@ -1,0 +1,7 @@
+fun main () : nothing
+	fun f (a : int) : int;
+	fun g (b : int) : int { if b < 1   then return 0; else return f(b + 1) - 1; }
+	fun f (a : int) : int { if a > 100 then return 0; else return g(a - 2) + 2; }
+{ $ main
+	f(42);
+} $ main

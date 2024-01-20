@@ -23,4 +23,5 @@ fun main () : nothing
 
 { $ main
 	writeInteger(Euclidean_algorithm(readInteger(), readInteger()));
+	writeChar('\n');
 } $ main

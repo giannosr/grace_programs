@@ -1,17 +1,18 @@
 fun main () : nothing
-	var n : int;
-	var A : int[100];
-	var B : int[010];
-	var C : int[001];
-	var D : int[010][010];
+	var n, m, k : int;
+	var A       : int[100];
+	var B       : int[010];
+	var C       : int[001];
+	var D       : int[010][010];
+	var c       : char;
 
-	fun test(ref A : int[][20][10]) : nothing
+	fun test(ref A : int[][20][10]) : int 
 
 	{
 		return 3;
 	}
 
-	fun test2(ref A : int[]) : nothing
+	fun test2(ref A : int[]) : int 
 
 	{
 		return 7;
@@ -23,12 +24,76 @@ fun main () : nothing
 		return -123456;
 	}
 
+	fun readChar(a : int) : int
+	
+	{
+		return 7-a;
+	}
+
+	fun test_Arr(ref A : int[]) : nothing
+
+	{
+		A[147] <- 15;
+		return;
+	}
+	var P : int[44][55][66];
+	
+	fun test_Arr2(ref A : int[3]) : int
+
+	{
+		return A[2];
+	}
+	var PP : int[3][4];
+
 { $ main
 	n <- 110;
+	m <- -n;
 	n <- 000020;
+	m <- +n;
+	n <- -m;
 	n <- 44;
+	m <- -n;
+	m <- -m;
+
+	c <- 'a';
+	c <- "lmao"[2];
 	
 	testy();
+	k <- 20;
+
+	if 1>0 then { m <- m + m; k <- m+1; }
+	else { n <- n + n; k <- n-1; }
+
+	m <- n-n + m;
+	n <- k+9;
+
+	m <- 10; n <- 66;
+	while m > 0 do {
+		m <- m + n;
+		n <- n - m;
+	}
+	n <- n*m;
+	m <- m + 3;
+
+	m <- D[5][7];
+
+	m <- 77;
+	D[2][3] <- n;
+	m <- 66;
+	D[2][4] <- D[1][0];
+	n <- D[0][0];
+
+	m <- 99 + readChar(n);
+	writeChar(c); writeChar('\n');
+
+	test_Arr(D[4]);
+
+	P[31][21][7] <- 301;
+	test_Arr(P[21][7]);
+
+	$ test_Arr2(B); should produce error
+	test_Arr2(PP[1]);
 
 	return;
+
 } $ main

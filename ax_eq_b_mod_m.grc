@@ -11,7 +11,7 @@ fun main () : nothing
 		}
 		gcd <- eea(b, a mod b, x, y);
 		temp <- y;
-		y <- x - a div b*y;
+		y <- x - a div b * y;
 		x <- temp;
 		return gcd;
 	}
@@ -30,7 +30,7 @@ fun main () : nothing
 	writeString(" (mod ");
 	writeInteger(m);
 	writeString(")\n\t");
-	d <- eea(a, m, x, y); $ just want the gcd at this point so we could avoid the extended version
+	d <- eea(a, m, x, y); $ a*x + m*y = d => (a/d)*x + (b/d)*y = 1 (x is now the modular inverse of a/d (mod m/d))
 	if b mod d = 0 then {
 		writeInteger(d);
 		writeString(" unique solutions (mod ");
@@ -41,14 +41,16 @@ fun main () : nothing
 		writeString("Impossible for x in Z.\n");
 		return;
 	}
-	eea(a div d, m div d, x, y); $ (x is now the modular inverse of a/d (mod m/d))
-	y <- x*(b div d);
+	if x < 0 then x <- m div d + x;
+	y <- x*(b div d) mod m;
+	while y > 0 do y <- y - m div d;
+	y <- y + m div d;
 	writeInteger(y);
-	y <- y + b div d;
+	y <- y + m div d;
 	while y < m do {
 		writeChar(' ');
 		writeInteger(y);
-		y <- y + b div d;
+		y <- y + m div d;
 	}
 	writeChar('\n');
 } $ main

@@ -10,10 +10,11 @@ fun main () : nothing
 			a <- ffib(n div 2);
 			b <- ffib(n div 2 + 1);
 			if n mod 2 = 1 then return b*b + a*a;
-			else                return 2*a*(b - a);
+			else                return a*(2*b - a);
 		}
 	}
 
 { $ main
 	writeInteger(ffib(readInteger()));
+	writeChar('\n');
 } $ main

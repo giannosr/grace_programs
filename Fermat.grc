@@ -32,7 +32,9 @@ fun main () : nothing
 	while n > 0 do {
 		ac <- ac*Fn;
 		Fn <- ac+2;
+		writeChar(' ');
 		writeInteger(Fn);
 		n <- n-1;
 	}
+	writeChar('\n');
 } $ main
