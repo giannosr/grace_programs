@@ -1,12 +1,11 @@
 fun main () : nothing
 
-	$ a procedure that computes the Dirichlet convolution (f*g)(n) using the definition in O(max_n^2).
-	fun conv (ref fg, f, g : int[]; max_n : int) : nothing
-		var n, d : int;
+	fun test (ref fg, f, g : int[]; max_n : int) : nothing
+		var n : int;
 	{
 		n <- 1;
 		while n <= max_n do {
-            fg[n] <- fg[n - 1] + f[n]*g[n];
+			fg[n] <- fg[n - 1] + f[n]*g[n];
 			n <- n+1;
 		}
 	}
@@ -30,13 +29,11 @@ fun main () : nothing
 		i <- i+1;
 	}
 	fg[0] <- 0;
-	conv(fg, f, g, max_n);
+	test(fg, f, g, max_n);
 	i <- 1;
 	while i <= max_n do {
 		writeInteger(fg[i]); writeChar(' ');
 		i <- i+1;
 	}
-	writeChar('\n');
-	writeString("ok\n");
 	writeChar('\n');
 } $ main
